@@ -3,7 +3,10 @@ package com.example.tarea4_marcosmedina;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,17 +15,33 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MunicipiosActivity extends ListActivity {
-    String [] nombresMuni;
+    String [] municipios;
+    String departamento;
+    Button btnAtras;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String departamento = getIntent().getStringExtra("depto");
+        btnAtras = (Button) findViewById(R.id.btnRegresar);
+
+        departamento = getIntent().getStringExtra("depto");
 
         // Dependiendo del departamento, mostrar los municipios correspondientes
-        String[] municipios = getMunicipios(departamento);
+         municipios = getMunicipios(departamento);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, municipios);
         setListAdapter(adapter);
+    }
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        String muniSelect = municipios[position].toString();
+
+        Intent intent = new Intent(MunicipiosActivity.this, DetallesActivity.class);
+        intent.putExtra("depto", departamento);
+        intent.putExtra("municipio", muniSelect);
+        startActivity(intent);
+    }
+    public void atras(View v){
+        finish();
     }
 
     private String[] getMunicipios(String departamento) {

@@ -32,7 +32,8 @@ public class DepartamentosActivity extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
         String deptosSelect = nombresDepartamentos[position].toString();
         Intent intent = new Intent(DepartamentosActivity.this, MunicipiosActivity.class);
-        intent.putExtra("departamento", "santana");
+        intent.putExtra("depto", deptosSelect);
+
         startActivity(intent);
     }
 }

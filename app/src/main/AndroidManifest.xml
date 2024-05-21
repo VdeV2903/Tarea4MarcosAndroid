@@ -17,9 +17,11 @@
             android:exported="false" />
         <activity
             android:name=".MunicipiosActivity"
+            android:theme="@style/Theme.AppCompat.Light"
             android:exported="false" />
         <activity
             android:name=".DepartamentosActivity"
+            android:theme="@style/Theme.AppCompat.Light"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

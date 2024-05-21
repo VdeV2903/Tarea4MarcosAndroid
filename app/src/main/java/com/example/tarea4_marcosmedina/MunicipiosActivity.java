@@ -21,8 +21,8 @@ public class MunicipiosActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        btnAtras = (Button) findViewById(R.id.btnRegresar);
 
+        btnAtras = (Button) findViewById(R.id.btnRegresar);
         departamento = getIntent().getStringExtra("depto");
 
         // Dependiendo del departamento, mostrar los municipios correspondientes
@@ -30,7 +30,10 @@ public class MunicipiosActivity extends ListActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, municipios);
         setListAdapter(adapter);
+
+
     }
+
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         String muniSelect = municipios[position].toString();
@@ -45,38 +48,37 @@ public class MunicipiosActivity extends ListActivity {
     }
 
     private String[] getMunicipios(String departamento) {
-        switch (departamento) {
-            case "Ahuachapán":
-                return getResources().getStringArray(R.array.ahuachapan);
-            case "Santa Ana":
-                return getResources().getStringArray(R.array.santana);
-            case "Sonsonate":
-                return getResources().getStringArray(R.array.sonsonate);
-            case "Usulután":
-                return getResources().getStringArray(R.array.usulutan);
-            case "San Miguel":
-                return getResources().getStringArray(R.array.sanmiguel);
-            case "Morazán":
-                return getResources().getStringArray(R.array.morazan);
-            case "La Unión":
-                return getResources().getStringArray(R.array.launion);
-            case "La Libertad":
-                return getResources().getStringArray(R.array.lalibertad);
-            case "Chalatenango":
-                return getResources().getStringArray(R.array.chalatenango);
-            case "Cuscatlán":
-                return getResources().getStringArray(R.array.cuscatlan);
-            case "San Salvador (la capital)":
-                return getResources().getStringArray(R.array.sansalvador);
-            case "La Paz":
-                return getResources().getStringArray(R.array.lapaz);
-            case "Cabañas":
-                return getResources().getStringArray(R.array.cabanas);
-            case "San Vicente":
-                return getResources().getStringArray(R.array.sanvicente);
-            // Agrega más casos según sea necesario
-            default:
-                return new String[]{};
+        if ("Ahuachapán".equals(departamento)) {
+            return getResources().getStringArray(R.array.ahuachapan);
+        } else if ("Santa Ana".equals(departamento)) {
+            return getResources().getStringArray(R.array.santana);
+        } else if ("Sonsonate".equals(departamento)) {
+            return getResources().getStringArray(R.array.sonsonate);
+        } else if ("Usulután".equals(departamento)) {
+            return getResources().getStringArray(R.array.usulutan);
+        } else if ("San Miguel".equals(departamento)) {
+            return getResources().getStringArray(R.array.sanmiguel);
+        } else if ("Morazán".equals(departamento)) {
+            return getResources().getStringArray(R.array.morazan);
+        } else if ("La Unión".equals(departamento)) {
+            return getResources().getStringArray(R.array.launion);
+        } else if ("La Libertad".equals(departamento)) {
+            return getResources().getStringArray(R.array.lalibertad);
+        } else if ("Chalatenango".equals(departamento)) {
+            return getResources().getStringArray(R.array.chalatenango);
+        } else if ("Cuscatlán".equals(departamento)) {
+            return getResources().getStringArray(R.array.cuscatlan);
+        } else if ("San Salvador (la capital)".equals(departamento)) {
+            return getResources().getStringArray(R.array.sansalvador);
+        } else if ("La Paz".equals(departamento)) {
+            return getResources().getStringArray(R.array.lapaz);
+        } else if ("Cabañas".equals(departamento)) {
+            return getResources().getStringArray(R.array.cabanas);
+        } else if ("San Vicente".equals(departamento)) {
+            return getResources().getStringArray(R.array.sanvicente);
+        } else {
+            return new String[]{};
         }
     }
+
 }
